@@ -1,0 +1,4 @@
+# média de cada variável do data frame LifeCycleSavings
+apply(LifeCycleSavings[ ,-2], 2, mean) #  retira a coluna 2, que não é numérica. no segundo parâmetro, o 2 indica que queremos a média das colunas. 
+lapply(LifeCycleSavings[, -2], mean) # sintaxe mais simples, pois não precisa especificar se é coluna ou linha
+sapply(LifeCycleSavings[, -2], mean) # mesma sintaxe, sendo a principal diferença que a sapply sempre tenta simplificar o resultado
