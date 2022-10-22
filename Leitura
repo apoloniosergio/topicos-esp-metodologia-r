@@ -1,0 +1,24 @@
+install.packages("microbenchmark")
+library(microbenchmark)
+
+# exporta em formato nativo do R
+saveRDS(sinistrosRecifeRaw, "bases_tratadas/sinistrosRecife.rds")
+
+# exporta em formato tabular (.csv e .txt) - padrão para interoperabilidade
+write.csv2(sinistrosRecifeRaw, "bases_tratadas/sinistrosRecife.csv")
+
+write.table(sinistrosRecifeRaw, "bases_tratadas/sinistrosRecife.txt" , sep = ";")
+
+# carrega base de dados em formato nativo R
+sinistrosRecife <- readRDS('bases_tratadas/sinistrosRecife.rds')
+
+# carrega base de dados em formato tabular (.csv e .txt) - padrão para interoperabilidade
+sinistrosRecife <- read.csv2('bases_tratadas/sinistrosRecife.csv', sep = ';')
+sinistrosRecife <- read.table('bases_tratadas/sinistrosRecife.txt' , sep = ';')
+
+
+# compara os tres processos de exportação, usando a função microbenchmark
+
+microbenchmark(a <- saveRDS(sinistrosRecifeRaw, "bases_tratadas/sinistrosRecife.rds"), b <- write.table(sinistrosRecifeRaw, "bases_tratadas/sinistrosRecife.txt"), c <- write.csv2(sinistrosRecifeRaw, "bases_tratadas/sinistrosRecife.csv"), times = 30L)
+
+microbenchmark(a <- readRDS('bases_tratadas/sinistrosRecife.rds'), b <- read.table('bases_tratadas/sinistrosRecife.txt', sep = ';'), c <-read.csv2('bases_tratadas/sinistrosRecife.csv', sep = ';'), times = 10L)
