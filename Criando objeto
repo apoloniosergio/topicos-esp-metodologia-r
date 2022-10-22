@@ -1,0 +1,9 @@
+
+#criando um objeto simples
+vetor  <- c (0, 2, 4, 6, 8, 10)
+
+#criando um objeto complexo
+
+lm(Sepal.Length ~ ., iris)
+regiris <-lm(Sepal.Length ~ ., iris)
+str(regiris)
