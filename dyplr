@@ -1,0 +1,17 @@
+library(dplyr)
+DespesasAPAC <- read.table("https://raw.githubusercontent.com/apoloniosergio/topicos-esp-metodologia-r/main/Despesas%20APAC%202022%20-%20P%C3%A1gina1.csv", sep=";", header = T)
+
+
+# sumários
+count(DespesasAPAC,ACAO) 
+count(DespesasAPAC, CODIGO_ACAO)
+count(DespesasAPAC, CATEGORIA)
+
+# sumários com agrupamentos
+DespesasAPAC %>% group_by(CATEGORIA) %>% summarise( avg = mean(VALORPAGO))
+
+
+### Transformação de Variáveis
+DespesasAPAC %>% group_by(ELEMENTODESPESA , PROGRAMA) %>% summarise( avg = mean (VALORPAGO))
+# novas colunas
+DespesasAPAC %>% mutate( VALORNAOLIQUIDADO = VALOREMPENHADO - VALORLIQUIDADO)
