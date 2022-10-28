@@ -1,0 +1,11 @@
+DespesasCEHAB<- read.table("https://raw.githubusercontent.com/apoloniosergio/topicos-esp-metodologia-r/main/CEHAB%202020%20-%20P%C3%A1gina1%20(6).csv", sep=",", header = T)
+
+pmcmv<-c("Ampliacao da Oferta de Habitacao de Interesse Social","Execucao de Obras de Infraestrutura e de Urbanizacao")# vetor identifica as atividades do programa melhoria da habitabilidade
+
+pmcmv_atividades<- DespesasCEHAB %>% filter(Atividade %in% pmcmv) # filtra casos apenas no vetor
+
+view(pmcmv_atividades)
+
+mpmcmv <- pmcmv_atividades %>% group_by(Atividade) %>% mutate(row = row_number()) %>% select(Fonte.de.Recurso,valor.liquidado)
+
+view(mpmcmv)
