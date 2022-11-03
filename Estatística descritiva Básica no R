@@ -1,0 +1,27 @@
+ ### Estatística Descritiva com R
+> ## Tabela de frequência absoluta da variável group da base PalntGrowth
+> table(PlantGrowth$group)
+
+ctrl trt1 trt2 
+  10   10   10 
+> ## Tabela de frequência relativa da variável group da base PlantGrowth
+> prop.table(table(PlantGrowth$group))
+
+     ctrl      trt1      trt2 
+0.3333333 0.3333333 0.3333333 
+> ## Média da variável weight da base PlantGrowth
+> mean(PlantGrowth$weight)
+[1] 5.073
+> ## Mediana da variável Sepal.Length da base PlantGrowth
+> median(PlantGrowth$weight)
+[1] 5.155
+> ## Separatrizes da variável weight da base PlantGrowth
+> quantile(PlantGrowth$weight, probs=0.75)
+ 75% 
+5.53 
+> quantile(PlantGrowth$weight, probs=0.10)
+ 10% 
+4.17 
+> quantile(PlantGrowth$weight, probs=0.95)
+  95% 
+6.132 
