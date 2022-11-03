@@ -1,0 +1,14 @@
+CARREGANDO PACOTES #
+library(dplyr)
+
+CRIANDO BASES #
+id.servidores <- 1:10
+nome.servidores <-c ( "Camila", "Lidyanne", "Diego", "Violeta", "Diogo", "Ivan", "Eudenes", "Raquel", "Luma", "Andressa")
+matricula.servidores <-c ("1290", "1651","2005","2006","2007","2006","1820","1970","2300","2318")
+servidores.dce <- data.frame (nome.servidores,matricula.servidores)
+cargos.servidores <- c ("auditor", "analista","analista", "auditor", "analisata","terceirizado", "auditor", "analista", "analista", "terceirizado")
+JUNTANDO BASES #
+servidores.dce.cargos <- data.frame (servidores.dce,cargos.servidores)
+
+view(servidores.dce.cargos)
+	
