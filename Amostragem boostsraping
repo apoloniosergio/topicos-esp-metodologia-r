@@ -1,0 +1,25 @@
+sample(distNormalSimulacao, 15, replace = FALSE) 
+ [1]  0.584613750  0.562989533  0.005764186  2.128451899 -0.236279569 -0.686852852
+ [7] -0.246691878 -0.034067254 -0.045027725  0.435181491  1.263185176  0.331781964
+[13]  0.077960850 -1.667941937 -0.472791408
+> # amostragem com reposição usando função sample
+> sample(distNormalSimulacao, 15, replace = TRUE)
+ [1] -0.45836533 -0.08336907 -0.68685285  0.30352864  0.21444531  0.31048075  1.90910357
+ [8] -0.96185663 -0.61116592  0.45150405 -0.26219749 -0.38022652 -0.84970435  0.58461375
+[15]  1.25381492
+> # bootstraping com função replicate
+> set.seed(412) 
+> bootsDistNormal10 <- replicate(10, sample(distNormalSimulacao, 10, replace = TRUE)) # replicamos 10x a amostra, criando assim um bootstrapping
+> # calculando uma estatística com bootstrapping (10 amostras)
+> mediaBootsNormal10 <- replicate(10, mean(sample(distNormalSimulacao, 10, replace = TRUE))) # calculamos a média de 10 amostras de 10 casos
+> mediaBootsNormal50 <- replicate(50, mean(sample(distNormalSimulacao, 10, replace = TRUE))) # calculamos a média de 50 amostras de 10 casos
+> mediaBootsNormal100 <- replicate(100, mean(sample(distNormalSimulacao, 10, replace = TRUE))) # calculamos a média de 100 amostras de 10 casos
+> # vamos comparar???
+> mean(mediaBootsNormal10) # media do boostraping 10
+[1] -0.05596402
+> mean(mediaBootsNormal50) # media do boostraping 50
+[1] 0.03103175
+> mean(mediaBootsNormal100) # media do boostraping 100
+[1] -0.05410651
+> mean(distNormalSimulacao) # media dos dados originais
+[1] -0.008570445
