@@ -1,0 +1,6 @@
+ regras_PlantGrowth <- validator(weight <5)
+> validacao_PlantGrowth <- confront(PlantGrowth, regras_PlantGrowth)
+> summary(validacao_PlantGrowth)
+  name items passes fails nNA error warning expression
+1   V1    30     13    17   0 FALSE   FALSE weight < 5
+> plot(validacao_PlantGrowth)
