@@ -1,0 +1,20 @@
+> glimpse(PlantGrowth) # olhada nos dados
+Rows: 30
+Columns: 2
+$ weight <dbl> 4.17, 5.58, 5.18, 6.11, 4.50, 4.61, 5.17, 4.53, 5.33, 5.14, 4.81, 4.17, 4.4…
+$ group  <fct> ctrl, ctrl, ctrl, ctrl, ctrl, ctrl, ctrl, ctrl, ctrl, ctrl, trt1, trt1, trt…
+> status(PlantGrowth) # estrutura dos dados (missing etc)
+       variable q_zeros p_zeros q_na p_na q_inf p_inf    type unique
+weight   weight       0       0    0    0     0     0 numeric     29
+group     group       0       0    0    0     0     0  factor      3
+> freq(PlantGrowth) # frequência das variáveis fator
+  group frequency percentage cumulative_perc
+1  ctrl        10      33.33           33.33
+2  trt1        10      33.33           66.66
+3  trt2        10      33.33          100.00
+
+> profiling_num(PlantGrowth) # estatísticas das variáveis numéricas
+  variable  mean   std_dev variation_coef   p_01  p_05 p_25  p_50 p_75  p_95   p_99
+1   weight 5.073 0.7011918      0.1382204 3.6596 3.983 4.55 5.155 5.53 6.132 6.2636
+    skewness kurtosis  iqr         range_98      range_80
+1 -0.1534047  2.34106 0.98 [3.6596, 6.2636] [4.17, 6.038]
