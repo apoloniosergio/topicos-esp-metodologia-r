@@ -1,0 +1,27 @@
+# seta a semente aleatória de geração de dados
+# usando a função addTaskCallback deixamos a set.seed fixa, rodando no back
+
+tarefaSemente <- addTaskCallback(function(...) {set.seed(123);TRUE}) # atribui a tarefa à variável tarefaSemente
+tarefaSemente # chama a tarefaSemente
+
+# distribuição normal simulada
+distNormalSimulacao <- rnorm(200) # usa a função rnorm para criar uma distribuição normal, indicando o total de casos
+
+summary(distNormalSimulacao) # sumário da distNormalSimulacao
+Min.  1st Qu.   Median     Mean  3rd Qu.     Max. 
+-2.30917 -0.62576 -0.05874 -0.00857  0.56840  3.24104 
+# distribuição binomial simulada
+distBinominalSimulacao <- rbinom(200, 1, 0.7) # rbinom para criar distribuição binominal, indicando casos, tamanho e probabilidade
+summary (distBinominalSimulacao)
+Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+0.000   0.000   1.000   0.725   1.000   1.000 
+# repetições
+classeSimulacao <- c(rep("Aprovado", length(distBinominalSimulacao)/2), rep("Reprovado", length(distBinominalSimulacao)/2)) # vetor repetindo a classe Aprovado e Reprovado
+view(classeSimulacao)
+sequências
+indexSimulacao <- seq(1, length(distNormalSimulacao)) # vetor com índex dos dados, usando a função length para pegar o total de casos
+view (indexSimulacao)
+# por fim, podemos usar a função removeTaskCallback para remover a tarefa que criamos lá em cima
+removeTaskCallback(tarefaSemente)
+
+
